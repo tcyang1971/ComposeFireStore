@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "396672259694",
+    "project_id": "tcyangandroid",
+    "storage_bucket": "tcyangandroid.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:396672259694:android:148de904ace35e2acc387f",
+        "android_client_info": {
+          "package_name": "tw.edu.pu.csim.tcyang.composefirestore"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBPi4HfdUna8hsFsStZU-qZty0Lu_aKBZU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

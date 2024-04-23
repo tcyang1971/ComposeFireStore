@@ -21,6 +21,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
+import com.google.firebase.Firebase
+import com.google.firebase.firestore.firestore
 import tw.edu.pu.csim.tcyang.composefirestore.ui.theme.ComposeFireStoreTheme
 
 
@@ -48,6 +50,7 @@ fun Birth(){
     var userWeight by remember { mutableStateOf(3800)}
     var userPassword by remember { mutableStateOf("")}
     var msg by remember { mutableStateOf("訊息")}
+    val db = Firebase.firestore
 
     Column {
         TextField(
@@ -89,7 +92,19 @@ fun Birth(){
 
 
         Row {
-            Button(onClick = {  }) {
+            Button(onClick = {
+                val user = Person(userName, userWeight, userPassword)
+                db.collection("users")
+                    //.add(user)
+                    .document(userName)
+                    .set(user)
+                    .addOnSuccessListener { documentReference ->
+                        msg = "新增/異動資料成功"
+                    }
+                    .addOnFailureListener { e ->
+                        msg = "新增/異動資料失敗：" + e.toString()
+                    }
+            }) {
                 Text("新增/修改資料")
             }
             Button(onClick = {  }) {
@@ -103,3 +118,10 @@ fun Birth(){
 
     }
 }
+
+data class Person(
+    var userName: String,
+    var userWeight: Int,
+    var userPassword: String
+)
+
